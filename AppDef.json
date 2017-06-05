@@ -1,7 +1,8 @@
 {
-    "name": "Sridhar-Example-Notebooks",
-    "description": "PowerAI-examples (caffe, torch, tensorflow), access Jupyter Notebooks from ports 8888,8889,8890, TensorBoard from port 6006 and DIGITS from port 5000. SSH into instance with user id: nimbix@<fqdn> and password from the Dashboard. Run “sudo su” followed by “jupyter notebook list” to find the tokens to login to the Jupyter notebook servers. The container runs for a max of 2 hours",
-    "author": "ipoddar@us.ibm.com",
+    "name": "wbc-notebook",
+    "description": "Access Jupyter Notebooks from ports 8890. SSH into instance with user id: nimbix@<fqdn> and password from the Dashboard. Run “sudo su” followed by “jupyter notebook list” to find the tokens to login to the Jupyter notebook servers. The container runs for a max of 2 hours",
+
+    "author": "sridharhr@in.ibm.com",
     "licensed": true,
     "classifications": [
         "Machine Learning/Deep Learning",
