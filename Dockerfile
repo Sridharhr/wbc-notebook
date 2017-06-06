@@ -2,7 +2,7 @@
 FROM jarvice/ubuntu-ibm-mldl-ppc64le
 
 #add Jupyter
-RUN pip install notebook pyyaml
+RUN pip install ipython==5.0 notebook==5.0 pyyaml
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 #add startupscripts
@@ -43,7 +43,7 @@ RUN pip install keras
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install build-essential cmake pkg-config
-RUN apt-get -y install libjpeg62-turbo-dev libtiff5-dev libjasper-dev libpng12-dev
+#RUN apt-get -y install libjpeg62-turbo-dev libtiff5-dev libjasper-dev libpng12-dev
 RUN apt-get -y install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
 RUN apt-get -y install libxvidcore-dev libx264-dev
 RUN apt-get -y install libgtk-3-dev
