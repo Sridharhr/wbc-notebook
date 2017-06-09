@@ -3,10 +3,16 @@ FROM jarvice/ubuntu-ibm-mldl-ppc64le
 
 #add Jupyter
 RUN pip install ipython==5.0 notebook==5.0 pyyaml
+#RUN pip install notebook pyyaml
 
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 #add startupscripts
 RUN apt-get install -y supervisor
+
+WORKDIR /root
+ADD startjupyter.sh /root/
+ADD conf.d/* /etc/supervisor/conf.d/
+#ADD rc.local /etc/rc.local
 
 RUN apt-get update && apt-get install -yq --no-install-recommends \
     git \
@@ -51,15 +57,14 @@ RUN apt-get -y install libatlas-base-dev gfortran
 #RUN apt-get -y install python2.7-dev python3.5-dev
 RUN apt-get -y install python-opencv
 
-WORKDIR /root
-ADD startjupyter.sh /root/
-ADD conf.d/* /etc/supervisor/conf.d/
-ADD rc.local /etc/rc.local
 
 #add wbc example 
-WORKDIR /home/nimbix
+#WORKDIR /home/nimbix
+RUN /bin/bash -c "cd /opt/DL/" 
 RUN git clone https://github.com/dhruvp/wbc-classification.git
 
 #add NIMBIX application
 COPY AppDef.json /etc/NAE/AppDef.json
 RUN curl --fail -X POST -d @/etc/NAE/AppDef.json https://api.jarvice.com/jarvice/validate
+
+CMD ["/usr/bin/supervisord", "-n","-c" ,"/etc/supervisor/supervisord.conf"]
