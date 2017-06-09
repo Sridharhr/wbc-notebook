@@ -6,4 +6,4 @@ source /opt/DL/theano/bin/theano-activate
 source /opt/DL/torch/bin/torch-activate
 source /opt/DL/digits/bin/digits-activate
 
-jupyter notebook --ip=0.0.0.0 --port=$1
+jupyter notebook --ip=0.0.0.0 --allow-root --port=$1
